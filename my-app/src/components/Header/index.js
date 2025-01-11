@@ -8,6 +8,12 @@ import { FiLogIn } from "react-icons/fi";
 import { Link } from 'react-router-dom'
 
 const Header = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Adds a smooth scrolling animation
+    });
+  };
   return (
     <header style={{ height: "var(--header-height)" }} className="bg-white fixed top-0 w-full shadow-md z-50">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
@@ -15,6 +21,7 @@ const Header = () => {
           <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Medi buddy</span>
             <img
+              onClick={scrollToTop}
               alt="MediBuddy Logo"
               src="https://www.medibuddy.in/assets/logos/medibuddyWithName.svg"
               className="h-8 w-auto"
@@ -25,7 +32,7 @@ const Header = () => {
         {/* Menu for Mobile and Web */}
         <div className="flex lg:flex-1 justify-end space-x-4">
           {/* Home Icon */}
-          <Link to="/" className="text-sm/6 font-semibold text-gray-900">
+          <Link onClick={scrollToTop} to="/" className="text-sm/6 font-semibold text-gray-900">
             <HomeIcon className="h-6 w-6 text-gray-600 hover:text-indigo-600" />
           </Link>
           

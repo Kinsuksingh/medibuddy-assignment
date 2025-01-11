@@ -1,0 +1,175 @@
+.trusted-users {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat img {
+    width: 50px;
+    margin-bottom: 10px;
+  }
+
+
+
+  .user-testimonials {
+    padding: 20px;
+  }
+  
+  .testimonial-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  
+  .rating {
+    color: gold;
+  }
+  
+  .date,
+  .location,
+  .testimonial,
+  .user-name {
+    margin-top: 10px;
+  }
+
+
+
+  .health-checkup-packages {
+    padding: 20px;
+  }
+  
+  .package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .package {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .package img {
+    width: 50px;
+    margin-bottom: 10px;
+  }
+
+
+
+  #how-it-works {
+    padding: 20px;
+  }
+  
+  #how-it-works ol {
+    list-style: none;
+    counter-reset: step-counter;
+    padding: 0;
+  }
+  
+  #how-it-works li {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
+  }
+  
+  #how-it-works li:before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #3498db; 
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+  }
+  
+  #how-it-works li img {
+    margin-right: 10px;
+  }
+
+
+
+
+
+  #safe-and-secure-tests {
+    padding: 20px;
+  }
+  
+  .safety-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .feature {
+    text-align: center;
+  }
+  
+  .feature img {
+    margin-bottom: 10px;
+  }
+
+
+
+
+
+  #faq {
+    padding: 20px;
+  }
+  
+  .faq-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .faq-list li {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .question h3 {
+    margin: 0;
+  }
+  
+  .question .icon {
+    font-size: 20px;
+  }
+  
+  .answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  .answer p {
+    margin: 10px 0 0 0;
+  }
+  
+  /* Add this to control the initial state of the answers */
+  .answer.active {
+    max-height: 100vh; /* Adjust as needed */
+  }

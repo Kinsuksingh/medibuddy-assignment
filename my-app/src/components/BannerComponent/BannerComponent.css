@@ -1,0 +1,84 @@
+/* Banner container styling */
+.banner-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    overflow: hidden;
+  }
+  
+  /* Slick slider styles override */
+  .slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .slick-dots {
+    bottom: 10px; /* Adjust dot position */
+  }
+  
+  .slick-dots li button:before {
+    color: #007bff; /* Dot color */
+    font-size: 12px; /* Dot size */
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: #0056b3; /* Active dot color */
+  }
+  
+  /* Hide arrows for smaller screens */
+  .slick-arrow {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    font-size: 16px;
+    z-index: 10;
+  }
+  
+  .slick-prev {
+    left: -40px;
+  }
+  
+  .slick-next {
+    right: -40px;
+  }
+  
+  .slick-arrow:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Banner image styling */
+  .banner-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+  }
+  
+  /* Make the component responsive */
+  @media (max-width: 768px) {
+    .slick-arrow {
+      display: none !important; /* Hide arrows for smaller screens */
+    }
+  
+    .banner-image {
+      border-radius: 5px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner-container {
+      padding: 0.5rem;
+    }
+  
+    .slick-dots li button:before {
+      font-size: 10px; /* Smaller dots for small screens */
+    }
+  }
+  
