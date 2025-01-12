@@ -15,6 +15,7 @@ const OurServices = lazy(() => import("./components/OurServices"));
 const ContactUs = lazy(() => import("./components/ContactUs"));
 const NotFoundPage = lazy(() => import("./components/NotFoundPage"));
 const Faq = lazy(()=> import("./components/Faq"))
+const Booking = lazy(()=> import ('./components/Booking'))
 
 // Function to dynamically update the page title based on the route
 const DynamicTitle = ({ defaultTitle = "E-Hospital" }) => {
@@ -31,6 +32,7 @@ const DynamicTitle = ({ defaultTitle = "E-Hospital" }) => {
       "/services": "Our Services - E-Hospital",
       "/contact": "Contact Us - E-Hospital",
       "/faq": "Faq - E-Hospital",
+      "/booking" : "Booking Form - E-Hospital",
     };
 
     document.title = titles[location.pathname] || defaultTitle;
@@ -58,6 +60,7 @@ function App() {
               <Route path="/services" element={<OurServices />} />
               <Route path="/contact" element={<ContactUs />} />
               <Route path="/faq" element={<Faq />} />
+              <Route path="/booking" element={<Booking />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </div>

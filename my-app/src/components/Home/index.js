@@ -170,7 +170,6 @@ const Home = () => {
                 iconText,
                 iconTag,
                 iconUrl,
-                deeplink,
                 order,
                 isActive,
                 eventName,
@@ -222,14 +221,14 @@ const Home = () => {
                   </div>
       
                   {/* Action Button */}
-                  <a
-                    href={deeplink}
+                  <Link
+                    to="/booking"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-4 inline-block px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 transition"
                   >
                     Book Now
-                  </a>
+                  </Link>
       
                   {/* Corporate Info */}
                   {checkForCorporates && (
@@ -261,7 +260,7 @@ const Home = () => {
       {/* Banners Section */}
       <section className="bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:px-10">
         <div className="max-w-7xl mx-auto">
-           {/* Render BannerComponent */}
+          {/* Render BannerComponent */}
           <BannerComponent props={banners} />
         </div>
       </section>
