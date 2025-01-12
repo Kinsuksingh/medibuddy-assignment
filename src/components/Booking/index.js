@@ -12,7 +12,7 @@ export default function Booking() {
 
   useEffect(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }, []);
+  }, []);
 
   // Handle input changes
   const handleChange = (e) => {
