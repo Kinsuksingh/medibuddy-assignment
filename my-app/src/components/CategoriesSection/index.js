@@ -88,11 +88,21 @@ const CategoriesSection = ({ selectedCategory, filterFun, healthCheckUps }) => {
         </button>
 
         {/* Page Indicator */}
-        <div className="text-sm font-medium text-gray-700">
-          <span aria-live="polite" aria-atomic="true" className="flex items-center gap-1">
-            <span className="font-bold text-blue-600">{currentPage}</span>
+        <div 
+          className="text-sm font-medium text-gray-700" 
+          role="status" 
+          aria-live="polite" 
+          aria-atomic="true" 
+          aria-relevant="text"
+        >
+          <span className="flex items-center gap-1">
+            <span className="font-bold text-blue-600">
+              {currentPage}
+            </span>
+            <span>of {totalPages}</span>
           </span>
         </div>
+
 
         {/* Next Button */}
         <button
@@ -119,9 +129,6 @@ const CategoriesSection = ({ selectedCategory, filterFun, healthCheckUps }) => {
             <h4 className="text-lg md:text-xl font-semibold text-gray-800 mb-4">
               Selected Category: {healthCheckUps.categories[activeCategory]}
             </h4>
-            <p className="text-gray-700 leading-relaxed">
-              Explore our curated health packages under the selected category. Your wellness is our priority.
-            </p>
           </div>
         ) : (
           <div className="text-center text-gray-600">

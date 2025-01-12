@@ -295,7 +295,7 @@ const Home = () => {
           </div>
       
           {/* Health Checkup Packages */}
-          <div className="bg-white p-8 rounded-lg shadow-lg">
+          <div>
             {filterPkg && filterPkg.length > 0 ? (
               <HealthCheckup packages={filterPkg} />
             ) : (

@@ -58,8 +58,8 @@ const FAQ = () => {
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center items-center mb-10">
-          <FaQuestionCircle className="text-blue-600 text-5xl mr-4" />
-          <h1 className="text-4xl font-extrabold text-blue-600">
+          <FaQuestionCircle className="text-gray-600 text-5xl mr-4" />
+          <h1 className="text-4xl font-extrabold gray-blue-600">
             Frequently Asked Questions (FAQ)
           </h1>
         </div>
