@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaUser, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 
@@ -9,10 +9,6 @@ export default function Booking() {
     email: '',
     phone: '',
   });
-
-  useEffect(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   // Handle input changes
   const handleChange = (e) => {

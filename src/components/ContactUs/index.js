@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaUserAlt } from "react-icons/fa";
 
 const ContactUs = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-white to-purple-200 p-8">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8">

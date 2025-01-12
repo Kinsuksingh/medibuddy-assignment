@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaQuestionCircle } from "react-icons/fa";
 
 const FAQ = () => {
@@ -39,10 +39,6 @@ const FAQ = () => {
       isExpanded: false,
     },
   ]);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   const toggleExpand = (id) => {
     setFaqItems((prevItems) =>

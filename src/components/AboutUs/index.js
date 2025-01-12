@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaHeartbeat, FaUserMd, FaHandHoldingHeart } from "react-icons/fa";
 
 const AboutUs = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200 p-8">
       <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-xl p-8">

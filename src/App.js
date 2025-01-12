@@ -1,8 +1,7 @@
-import React, { lazy, useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
 
 // Lazy load components for better performance
 const Home = lazy(() => import("./components/Home"));
@@ -14,14 +13,15 @@ const AboutUs = lazy(() => import("./components/AboutUs"));
 const OurServices = lazy(() => import("./components/OurServices"));
 const ContactUs = lazy(() => import("./components/ContactUs"));
 const NotFoundPage = lazy(() => import("./components/NotFoundPage"));
-const Faq = lazy(()=> import("./components/Faq"))
-const Booking = lazy(()=> import ('./components/Booking'))
+const Faq = lazy(() => import("./components/Faq"));
+const Booking = lazy(() => import("./components/Booking"));
 
-// Function to dynamically update the page title based on the route
+// Utility function to set dynamic page titles
 const DynamicTitle = ({ defaultTitle = "E-Hospital" }) => {
   const location = useLocation();
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     const titles = {
       "/": "Home - E-Hospital",
       "/login": "Login - E-Hospital",
@@ -32,7 +32,7 @@ const DynamicTitle = ({ defaultTitle = "E-Hospital" }) => {
       "/services": "Our Services - E-Hospital",
       "/contact": "Contact Us - E-Hospital",
       "/faq": "Faq - E-Hospital",
-      "/booking" : "Booking Form - E-Hospital",
+      "/booking": "Booking Form - E-Hospital",
     };
 
     document.title = titles[location.pathname] || defaultTitle;
@@ -41,15 +41,50 @@ const DynamicTitle = ({ defaultTitle = "E-Hospital" }) => {
   return null; // No UI for this component
 };
 
+// ScrollToTop component to ensure scrolling to the top on every route change
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location]);
+
+  return null;
+};
+
+// Error boundary component for graceful error handling
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    console.error("Error caught by ErrorBoundary:", error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div>Something went wrong. Please try again later.</div>;
+    }
+
+    return this.props.children;
+  }
+}
+
 function App() {
   return (
     <Router>
-        <DynamicTitle />
-        <Header />
-        <div
-          className="flex flex-col min-h-screen"
-          style={{ paddingTop: "var(--header-height)" }}
-        >
+      <DynamicTitle />
+      <ScrollToTop />
+      <Header />
+      <ErrorBoundary>
+        <div className="flex flex-col min-h-screen" style={{ paddingTop: "var(--header-height)" }}>
+          <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/signup" element={<Signup />} />
@@ -63,8 +98,10 @@ function App() {
               <Route path="/booking" element={<Booking />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
+          </Suspense>
         </div>
-        <Footer />
+      </ErrorBoundary>
+      <Footer />
     </Router>
   );
 }
