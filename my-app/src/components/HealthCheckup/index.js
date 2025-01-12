@@ -7,8 +7,8 @@ const HealthCheckup = ({ packages }) => {
         className="flex space-x-4 p-4 overflow-x-auto"
         style={{
           WebkitOverflowScrolling: 'touch',
-          scrollbarWidth: 'none', // For Firefox
-          msOverflowStyle: 'none', // For Internet Explorer and Edge
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none', 
         }}
       >
         {packages.map((pkg, index) => (
@@ -58,37 +58,14 @@ const HealthCheckup = ({ packages }) => {
               </div>
             </div>
             <div className="flex items-center justify-between mt-4">
+              <strong>Discount:</strong>
               <span className="text-lg font-bold text-green-500">
-                ₹{pkg.discountInfo.discountPrice}
+                {pkg.discountInfo.discountPrice}%
               </span>
-              <div className="flex items-center space-x-2">
-                <button
-                  className={`px-3 py-1 border text-blue-500 font-bold rounded ${
-                    !pkg.isAvailable ? 'cursor-not-allowed text-gray-400' : ''
-                  }`}
-                  disabled={!pkg.isAvailable}
-                >
-                  -
-                </button>
-                <span className="font-bold">1</span>
-                <button
-                  className={`px-3 py-1 border text-blue-500 font-bold rounded ${
-                    !pkg.isAvailable ? 'cursor-not-allowed text-gray-400' : ''
-                  }`}
-                  disabled={!pkg.isAvailable}
-                >
-                  +
-                </button>
-              </div>
             </div>
           </div>
         ))}
       </div>
-      <style jsx>{`
-        .health-checkup-container > .flex::-webkit-scrollbar {
-          display: none; /* For Chrome, Safari, and Opera */
-        }
-      `}</style>
     </div>
   );
 };
