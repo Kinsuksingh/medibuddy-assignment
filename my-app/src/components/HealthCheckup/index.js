@@ -60,7 +60,7 @@ const HealthCheckup = ({ packages }) => {
             <div className="flex items-center justify-between mt-4">
               <strong>Discount:</strong>
               <span className="text-lg font-bold text-green-500">
-                {pkg.discountInfo.discountPrice}%
+                {pkg.discount}%
               </span>
             </div>
           </div>
