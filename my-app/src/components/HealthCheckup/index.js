@@ -2,65 +2,76 @@ import React from 'react';
 
 const HealthCheckup = ({ packages }) => {
   return (
-    <div className="health-checkup-container">
+    <div className="health-checkup-container p-4">
       <div
-        className="flex space-x-4 p-4 overflow-x-auto"
-        style={{
-          WebkitOverflowScrolling: 'touch',
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none', 
-        }}
+        className="flex space-x-6 p-6 overflow-x-auto scrollbar-hide"
+        style={{ WebkitOverflowScrolling: 'touch' }}
+        aria-label="Health Checkup Packages"
       >
         {packages.map((pkg, index) => (
           <div
             key={index}
-            className="min-w-[300px] flex-shrink-0 bg-white p-4 border rounded-lg shadow-lg relative"
+            className="min-w-[280px] flex-shrink-0 bg-gradient-to-br from-blue-50 via-white to-gray-100 p-6 border border-gray-200 rounded-lg shadow-lg hover:shadow-xl relative transition-transform transform hover:scale-105 md:min-w-[320px]"
           >
+            {/* Sponsored Label */}
             {pkg.isSponsored && (
-              <div className="absolute top-0 right-0 bg-red-500 text-white text-sm font-bold px-2 py-1 rounded-bl">
+              <div
+                className="absolute top-0 right-0 bg-gradient-to-r from-red-600 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-bl"
+                aria-label="Sponsored Package"
+              >
                 Sponsored
               </div>
             )}
-            <h3 className="text-lg font-bold text-gray-800 mb-2">
-              {pkg.packageDisplayName}
+
+            {/* Package Title */}
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 truncate">
+              {pkg.packageDisplayName || 'Unnamed Package'}
             </h3>
+
+            {/* Reports Info */}
             <p className="text-blue-500 text-sm mb-4">
               📄 Reports in {pkg.reportTime || 'N/A'}
             </p>
+
+            {/* Test Summary */}
             <div className="text-sm text-gray-700">
               <p className="mb-2">
-                <strong>{pkg.testCount} Tests</strong>
+                <strong>{pkg.testCount || 0} Tests</strong>
               </p>
-              <ul className="list-none pl-4 mb-2">
+              <ul className="list-disc pl-5 mb-2">
                 {pkg.testsSummary.slice(0, 2).map((test, i) => (
                   <li key={i}>{test}</li>
                 ))}
                 {pkg.testCount - pkg.testsSummary.length > 0 && (
-                  <li>+ {pkg.testCount - pkg.testsSummary.length} more</li>
+                  <li className="text-gray-500">
+                    + {pkg.testCount - pkg.testsSummary.length} more
+                  </li>
                 )}
               </ul>
               {pkg.isRadiologyIncluded && (
-                <p className="flex items-center mb-2">
-                  <span className="material-icons text-blue-500 mr-1">science</span>
+                <p className="flex items-center text-sm mb-2 text-blue-600">
+                  <span className="material-icons text-base mr-1">science</span>
                   <strong>Includes:</strong> Radiology
                 </p>
               )}
             </div>
-            <div className="flex justify-between items-center bg-gray-100 p-2 rounded mt-4">
-              <div className="text-sm">
-                <p>
-                  <strong>Fasting:</strong> {pkg.fastingHoursText}
-                </p>
-                <p>
-                  <strong>Available:</strong>{' '}
-                  {pkg.isHomeSampleAvailable ? 'at Home' : 'at Center'}
-                </p>
-              </div>
+
+            {/* Availability & Fasting Info */}
+            <div className="bg-gradient-to-r from-gray-100 to-gray-200 p-3 rounded-md mt-4 text-sm text-gray-700">
+              <p>
+                <strong>Fasting:</strong> {pkg.fastingHoursText || 'N/A'}
+              </p>
+              <p>
+                <strong>Available:</strong>{' '}
+                {pkg.isHomeSampleAvailable ? 'at Home' : 'at Center'}
+              </p>
             </div>
-            <div className="flex items-center justify-between mt-4">
-              <strong>Discount:</strong>
-              <span className="text-lg font-bold text-green-500">
-                {pkg.discount}%
+
+            {/* Discount Section */}
+            <div className="flex justify-between items-center mt-4">
+              <span className="text-gray-700 font-medium">Discount:</span>
+              <span className="text-xl font-bold text-green-600">
+                {pkg.discount ? `${pkg.discount}%` : 'No Discount'}
               </span>
             </div>
           </div>

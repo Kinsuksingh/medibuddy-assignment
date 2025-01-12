@@ -1,31 +1,67 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { lazy, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import NotFoundPage from './components/NotFoundPage'
-import Signup from "./components/Signup";
-import Cart from "./components/Cart";
-import Wallet from "./components/Wallet";
+
+
+// Lazy load components for better performance
+const Home = lazy(() => import("./components/Home"));
+const Login = lazy(() => import("./components/Login"));
+const Signup = lazy(() => import("./components/Signup"));
+const Cart = lazy(() => import("./components/Cart"));
+const Wallet = lazy(() => import("./components/Wallet"));
+const AboutUs = lazy(() => import("./components/AboutUs"));
+const OurServices = lazy(() => import("./components/OurServices"));
+const ContactUs = lazy(() => import("./components/ContactUs"));
+const NotFoundPage = lazy(() => import("./components/NotFoundPage"));
+const Faq = lazy(()=> import("./components/Faq"))
+
+// Function to dynamically update the page title based on the route
+const DynamicTitle = ({ defaultTitle = "E-Hospital" }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const titles = {
+      "/": "Home - E-Hospital",
+      "/login": "Login - E-Hospital",
+      "/signup": "Signup - E-Hospital",
+      "/cart": "Your Cart - E-Hospital",
+      "/wallet": "Wallet - E-Hospital",
+      "/about": "About Us - E-Hospital",
+      "/services": "Our Services - E-Hospital",
+      "/contact": "Contact Us - E-Hospital",
+      "/faq": "Faq - E-Hospital",
+    };
+
+    document.title = titles[location.pathname] || defaultTitle;
+  }, [location, defaultTitle]);
+
+  return null; // No UI for this component
+};
 
 function App() {
   return (
     <Router>
-      <Header/>
-      <div className="flex flex-col min-h-screen" style={{ paddingTop: "var(--header-height)" }}>
-        <Routes>
-          {/* Updated to Routes component, with element prop */}
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/wallet" element={<Wallet />} />
-          {/* Catch-all route for 404 */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </div>
-      <Footer />
+        <DynamicTitle />
+        <Header />
+        <div
+          className="flex flex-col min-h-screen"
+          style={{ paddingTop: "var(--header-height)" }}
+        >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/wallet" element={<Wallet />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/services" element={<OurServices />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/faq" element={<Faq />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+        </div>
+        <Footer />
     </Router>
   );
 }
