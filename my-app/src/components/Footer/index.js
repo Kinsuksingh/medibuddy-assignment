@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -6,30 +7,30 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm">
-            © {new Date().getFullYear()} MyApp. All rights reserved.
+            &copy; {new Date().getFullYear()} MyApp. All rights reserved.
           </div>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <a
-              href="#"
+            <Link 
+              to="#"
               className="hover:text-blue-400"
               aria-label="Facebook"
             >
               Facebook
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link 
+              to="#"
               className="hover:text-blue-400"
               aria-label="Twitter"
             >
               Twitter
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link 
+              to="#"
               className="hover:text-blue-400"
               aria-label="LinkedIn"
             >
               LinkedIn
-            </a>
+            </Link>
           </div>
         </div>
       </div>
